@@ -1,0 +1,14 @@
+services:
+  dev:
+    image: golang:unphased-dev
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    security_opt:
+      - seccomp:unconfined
+    volumes:
+      - .:/code/unphased_example
+      - ../unphased:/code/unphased
+    ports:
+      - "8080:8080"
+    command: bash -c "sleep infinity"
